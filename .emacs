@@ -327,7 +327,6 @@
 
 
 ;; colorizing multiply-quoted lines
-
 (add-hook 'message-mode-hook
           (lambda ()
             (font-lock-add-keywords nil
