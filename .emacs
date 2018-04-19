@@ -45,7 +45,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit jedi-direx clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode jedi elpy)))
+    (mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode elpy)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function (quote mailclient-send-it))
@@ -84,6 +84,32 @@
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 
+
+;;--------------------- Installing el-get -------------------->>>
+;; It's important to call el-get before "package initialize" to avoid
+;; package conflicts with melpa installed packages
+;; Also checks if el-get is available and ready to
+;; use every time.
+
+;; I used it to install jedi, the most useful
+;; auto-completion tool i've ever used M-x el-get-install
+
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
+
+
+;;------------------- Initializing packages ------------------>>>
+
 (package-initialize)
 
 ;;------- To automatically install packages when missing------>>>
@@ -95,6 +121,7 @@
 (dolist (package package-selected-packages)
   (unless (package-installed-p package)
     (package-install package)))
+
 
 ;;-------------------------- Themes -------------------------->>>
 ;; Tweak the them by changing just a few colors
@@ -115,25 +142,6 @@
 
 (load-theme 'material-light t)
 
-;;----------Installing el-get------------------->>>
-;; Also checks if el-get is available and ready to
-;; use every time.
-
-;; I used it to install jedi, the most useful
-;; auto-completion tool i've ever used M-x el-get-install
-
-
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(el-get 'sync)
 
 
 ;;-------------------------- Jedi -------------------------->>>
