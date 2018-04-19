@@ -45,7 +45,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (el-get mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit jedi-direx clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode jedi elpy)))
+    (mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit jedi-direx clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode jedi elpy)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function (quote mailclient-send-it))
