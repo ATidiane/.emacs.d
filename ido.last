@@ -1,0 +1,86 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/ahmed/Documents/ARF/TMEs/TMEs/" . "TME6/")
+ ("/home/ahmed/Documents/ARF/TMEs/" . "TMEs/")
+ ("/home/ahmed/Documents/ARF/" . "TMEs/")
+ ("/home/ahmed/Documents/" . "ARF/")
+ ("/home/ahmed/" . "Documents/")
+ ("/home/" . "ahmed/")
+ ("/" . "home/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/ahmed/Documents/Scripts/"
+ "/home/ahmed/Documents/ARF/TMEs/TMEs/TME6/"
+ "/home/ahmed/Documents/ARF/TMEs/TMEs/TME4-5/"
+ "/home/ahmed/Documents/ARF/TMEs/TMEs/TME3/"
+ "/home/ahmed/Documents/ARF/TMEs/TMEs/TME2/"
+ "/home/ahmed/Documents/ARF/TMEs/TMEs/TME1/"
+ "/home/ahmed/Documents/ARF/TMEs/TME2/"
+ "/home/ahmed/Documents/ARF/TMEs/TME1/"
+ "/home/ahmed/Documents/ARF/TMEs/TME4-5/"
+ "/home/ahmed/Documents/ARF/TMEs/TME6/"
+ "/home/ahmed/"
+ "/home/ahmed/Documents/ARF/TMEs/TME3/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "spams.py"
+ "deletespams.py"
+ "mail.py"
+ "sendspams.py"
+ "tme6_etu.py"
+ "tme4_etu.py"
+ "projections.py"
+ "usps.py"
+ "fit.py"
+ "perceptron.py"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/ahmed/Documents/Scripts/" (23254 14745 703864 378000) "./" "deletespams.py" "__pycache__/" "spams.py" "spams.py~" "sendspams.py" "../" "sendspams.py~" "mail.py" "mail.py~" "deletespams.py~")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TME3/" (23251 15896 902223 216000) "./" "tme3-etu.py" "logisticRegression.py" "__pycache__/" "USPS_test.txt" "USPS_train.txt" "ARF-TME3-2017.pdf" "../")
+
+ ("/home/ahmed/" (23253 43283 105304 831000) ".dbus/" "Music/" ".oh-my-git/" ".fonts/" ".gnupg/" "./" ".lesshst" ".ssh/" "Images/" "t_fichiers/" "Public/" "build/" "test.py~" "moviemon/" "node_modules/" "examples.desktop" "test.py" "Documents/" ".bashrc~" ".bashrc" ".bash_logout" "mozilla.pdf" "Musique/" "a.py" ".config/" ".local/" "Downloads/" ".emacs~" ".mozilla/" "Vidéos/" "dist/" ".gconf/" "tmp" ".jupyter/" ".browser_history" "Videos/" ".gem/" "#a.py#" ".profile" ".thunderbird/" "t.html" "Bureau/" ".moviemon" ".w3m/" "Modèles/" ".tmux.conf~" "Templates/" ".emacs" "Desktop/" "snap/" "a.py~" ".emacs.d/" "icons-in-terminal/" ".bash_profile" ".wget-hsts" ".gitconfig" ".sudo_as_admin_successful" "Téléchargements/" ".qfc/" ".npm/" "gogh" "Pictures/" "Mail/" ".tmux.conf" ".bash_profile~" ".ICEauthority" "../" ".ipython/" ".bash_history" ".cache/" "moviemon.egg-info/" "ls-icons/")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TME6/" (23251 16515 372296 579000) "./" "tme6_etu.py" "USPS_test.txt" "ARF-TME6-2017.pdf" "USPS_train.txt" "../")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TME4-5/" (23251 15915 405686 873000) "./" "arftools.py" "ARF-TME4-2017.pdf" "__pycache__/" "cost_functions.py" "projections.py" "perceptron.py" "USPS_test.txt" "tme4_etu.py" "usps.py" "USPS_train.txt" "../")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TME1/" (23251 15851 739532 310000) "./" "imdb_extrait.pkl" "__pycache__/" "ARF-2017-TME1.pdf" "decisiontree.py" "../" "tme1.py")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TME2/" (23251 15880 486699 39000) "./" "tme2-poi.py" "gmap-poi.py" "ARF-TME2-2017.pdf" "data/" "../")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TMEs/TME6/" (23251 10760 219174 209000) "./" "tme6_etu.py" "USPS_test.txt" "USPS_train.txt" "../")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TMEs/TME4-5/" (23251 14109 634051 276000) "./" "usps.py~" "arftools.py" "tme4_etu.py~" "__pycache__/" "cost_functions.py" "projections.py" "perceptron.py" "cost_functions.py~" "USPS_test.txt" "perceptron.py~" "tme4_etu.py" "usps.py" "USPS_train.txt" "../" "projections.py~")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TMEs/TME3/" (23251 12033 110506 689000) "./" "tme3-etu.py" "logisticRegression.py" "__pycache__/" "USPS_test.txt" "tme3-etu.py~" "USPS_train.txt" "../")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TMEs/TME2/" (23251 10937 790071 145000) "./" "tme2-poi.py" "gmap-poi.py" "tme2-poi.py~" "data/" "../")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TMEs/TME1/" (23251 10567 716696 187000) "./" "imdb_extrait.pkl" "__pycache__/" "TME1.py" "decisiontree.py" "../")
+
+ ("/home/ahmed/Documents/ARF/TMEs/TMEs/" (23251 10483 243114 849000) "./" "TME1/" "TME6/" "TME4-5/" "TME3/" "../" "TME2/")
+
+ ("/home/ahmed/Documents/ARF/TMEs/" (23251 10452 319999 414000) "./" "TME1/" "im/" "TME6/" "TMEs/" "__init__.py" ".DS_Store" "TME4-5/" "TME3/" "../" "TME7/" "TME2/")
+
+ ("/home/ahmed/.emacs.d/" (23249 2245 267249 352000) "./" "ido.last~" "url/" "ido.last" "el-get/" "request/" "snippets/" "ac-comphist.dat" "auto-save-list/" ".python-environments/" "elpa/" "speed-type/" "../")
+
+ ("/home/ahmed/Bureau/" (23240 51247 799381 156000) "./" "../")
+
+ ("/home/" (23240 50475 295344 481000) "./" "ahmed/" "lost+found/" "../")
+
+ ("/home/ahmed/Documents/" (23245 533 521406 926000) "./" "ARF/" ".emacs" "TAL/" "../")
+
+ ("/home/ahmed/Documents/ARF/" (23242 21311 999873 912000) "README.md" "./" ".git/" "TMEs/" "TDs/" "../" "Cours/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
