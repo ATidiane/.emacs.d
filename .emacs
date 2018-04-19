@@ -1,4 +1,4 @@
-;; Added by Package.el.  This must come before configurations of
+;; Added by Package.el.  Thisb must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
@@ -45,7 +45,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode elpy)))
+    (el-get mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode elpy)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function (quote mailclient-send-it))
@@ -69,7 +69,6 @@
 
 
 
-
 ;;---------------- Getting started with MElpa --------------->>>
 ;; Important : Should be placed before the (package-initialize) line
 
@@ -85,6 +84,11 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 
 
+
+;;------------------- Initializing packages ------------------>>>
+
+(package-initialize)
+
 ;;--------------------- Installing el-get -------------------->>>
 ;; It's important to call el-get before "package initialize" to avoid
 ;; package conflicts with melpa installed packages
@@ -94,34 +98,29 @@
 ;; I used it to install jedi, the most useful
 ;; auto-completion tool i've ever used M-x el-get-install
 
-
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.org/packages/"))
+  (package-refresh-contents)
+  (package-initialize)
+  (package-install 'el-get)
+  (require 'el-get))
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-
-;;------------------- Initializing packages ------------------>>>
-
-(package-initialize)
-
 ;;------- To automatically install packages when missing------>>>
 ;; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
+;; (unless package-archive-contents
+;;   (package-refresh-contents))
 
-;; install the missing packages
-(dolist (package package-selected-packages)
-  (unless (package-installed-p package)
-    (package-install package)))
-
+;; ;; install the missing packages
+;; (dolist (package package-selected-packages)
+;;   (unless (package-installed-p package)
+;;     (package-install package)))
 
 ;;-------------------------- Themes -------------------------->>>
 ;; Tweak the them by changing just a few colors
@@ -147,7 +146,7 @@
 ;;-------------------------- Jedi -------------------------->>>
 ;; Standard Jedi.el setting, for python
 
-(setq jedi:server-command '("~/.emacs.d/el-get/jedi/jediepcserver.py"))
+(setq jedi:server-command '("~/.emacs.d/elpa/jedi-core-20170121.610/jediepcserver.py"))
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t) ;; optional
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -212,9 +211,9 @@
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-q") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-w") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-w") 'mc/mark-all-like-this)
 
 ;; Binding mouse events
 (global-unset-key (kbd "M-<down-mouse-1>"))
@@ -242,8 +241,6 @@
 (global-set-key (kbd "C-x C-a") 'sidebar-buffers-open)
 
 ;; C-h f icons-in-terminal[RET] for more info
-
-
 
 
 ;;---------------------- Binding keys  --------------------->>>
