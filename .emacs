@@ -114,10 +114,10 @@
 
 ;;------- To automatically install packages when missing------>>>
 ;; fetch the list of packages available
-;; (unless package-archive-contents
-;;   (package-refresh-contents))
+(unless package-archive-contents
+  (package-refresh-contents))
 
-;; ;; install the missing packages
+;; install the missing packages
 ;; (dolist (package package-selected-packages)
 ;;   (unless (package-installed-p package)
 ;;     (package-install package)))
