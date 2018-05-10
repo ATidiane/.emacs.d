@@ -248,7 +248,6 @@
 (powerline-center-theme)
 (setq powerline-default-separator 'wave)
 
-
 ;;-------------------- Undo Tree mode ---------------------->>>
 
 (global-undo-tree-mode)
@@ -263,6 +262,7 @@
 
 
 ;; Enable auto complete even in here
+(require 'auto-complete)
 (ac-config-default)
 
 ;; Hyphen on Space, replace a space by "-"
@@ -329,8 +329,6 @@
     ;; ...else, run the original ido-set-matches-1
     ad-do-it))
 
-
-
 ;;---------------------- Binding keys  --------------------->>>
 
 (global-set-key "\C-cb" 'sh-mode)
@@ -354,7 +352,6 @@
 
 ;; (set-face-background 'linum "cyan")
 ;; (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-
 
 ;;--------------------------- Fun -------------------------->>>
 
