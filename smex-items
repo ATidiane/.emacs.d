@@ -1,0 +1,19 @@
+
+;; ----- smex-history -----
+(
+ package-install
+ load-file
+ auto-complete
+ cd
+ 5x5
+ arp
+ dbx
+)
+
+;; ----- smex-data -----
+(
+ (package-install . 9)
+ (autopair-global-mode . 5)
+ (auto-complete . 3)
+ (load-file . 1)
+)

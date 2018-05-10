@@ -45,7 +45,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (smex el-get mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode elpy)))
+    (switch-window undo-tree autopair smex minimap powerline el-get mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode elpy)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function (quote mailclient-send-it))
@@ -131,7 +131,6 @@
     ("zenburn-bg+3"  . "#4F4F4F")))
 (load-theme 'zenburn nil)
 
-;; actual theme
 ;; (load-theme 'leuven t)
 
 ;; (load-theme 'goose t)
@@ -139,8 +138,8 @@
 ;; load material theme, from the tuto to install flycheck
 ;; (load-theme 'material t)
 
+;; actual theme
 (load-theme 'material-light t)
-
 
 
 ;;-------------------------- Jedi -------------------------->>>
@@ -211,9 +210,9 @@
 
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-q") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-w") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-w") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-}") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-{") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-{") 'mc/mark-all-like-this)
 
 ;; Binding mouse events
 (global-unset-key (kbd "M-<down-mouse-1>"))
@@ -242,6 +241,93 @@
 
 ;; C-h f icons-in-terminal[RET] for more info
 
+;;---------------------- Powerline ------------------------->>>
+
+(require 'powerline)
+;; (powerline-default-theme)
+(powerline-center-theme)
+(setq powerline-default-separator 'wave)
+
+;;-------------------- Undo Tree mode ---------------------->>>
+
+(global-undo-tree-mode)
+
+(global-set-key (kbd "M-/") 'undo-tree-visualize)
+
+;;--------------------- Smex and AC ------------------------>>>
+
+(global-set-key (kbd "M-x") 'smex)
+
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+
+;; Enable auto complete even in here
+(require 'auto-complete)
+(ac-config-default)
+
+;; Hyphen on Space, replace a space by "-"
+(defadvice smex (around space-inserts-hyphen activate compile)
+  (let ((ido-cannot-complete-command
+         `(lambda ()
+            (interactive)
+            (if (string= " " (this-command-keys))
+                (insert ?-)
+              (funcall ,ido-cannot-complete-command)))))
+    ad-do-it))
+
+;; Update less often
+(defun smex-update-after-load (unused)
+  (when (boundp 'smex-cache)
+    (smex-update)))
+(add-hook 'after-load-functions 'smex-update-after-load)
+
+;; Using acronyms
+(defadvice ido-set-matches-1 (around ido-smex-acronym-matches activate)
+  "Filters ITEMS by setting acronynms first."
+  (if (and (fboundp 'smex-already-running) (smex-already-running) (> (length ido-text) 1))
+
+      ;; We use a hash table for the matches, <type> => <list of items>, where
+      ;; <type> can be one of (e.g. `ido-text' is "ff"):
+      ;; - strict: strict acronym match (i.e. "^f[^-]*-f[^-]*$");
+      ;; - relaxed: for relaxed match (i.e. "^f[^-]*-f[^-]*");
+      ;; - start: the text start with (i.e. "^ff.*");
+      ;; - contains: the text contains (i.e. ".*ff.*");
+      (let ((regex (concat "^" (mapconcat 'char-to-string ido-text "[^-]*-")))
+            (matches (make-hash-table :test 'eq)))
+
+        ;; Filtering
+        (dolist (item items)
+          (let ((key))
+            (cond
+             ;; strict match
+             ((string-match (concat regex "[^-]*$") item)
+              (setq key 'strict))
+
+             ;; relaxed match
+             ((string-match regex item)
+              (setq key 'relaxed))
+
+             ;; text that start with ido-text
+             ((string-match (concat "^" ido-text) item)
+              (setq key 'start))
+
+             ;; text that contains ido-text
+             ((string-match ido-text item)
+              (setq key 'contains)))
+
+            (when key
+              ;; We have a winner! Update its list.
+              (let ((list (gethash key matches ())))
+                (puthash key (push item list) matches)))))
+
+        ;; Finally, we can order and return the results
+        (setq ad-return-value (append (gethash 'strict matches)
+                                      (gethash 'relaxed matches)
+                                      (gethash 'start matches)
+                                      (gethash 'contains matches))))
+
+    ;; ...else, run the original ido-set-matches-1
+    ad-do-it))
 
 ;;---------------------- Binding keys  --------------------->>>
 
@@ -255,6 +341,7 @@
 ;; use only spaces and no tabs
 (display-time)
 (column-number-mode t)
+(tool-bar-mode -1)
 
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
@@ -265,7 +352,6 @@
 
 ;; (set-face-background 'linum "cyan")
 ;; (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-
 
 ;;--------------------------- Fun -------------------------->>>
 
