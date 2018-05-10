@@ -45,7 +45,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (switch-window undo-tree autopair smex minimap powerline el-get mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode elpy)))
+    (ipython-shell-send pydoc-info python-mode pydoc fill-column-indicator switch-window undo-tree autopair smex minimap powerline el-get mu4e-maildirs-extension mu4e-alert multiple-cursors sphinx-doc python-docstring goose-theme py-isort better-defaults py-autopep8 material-theme ein flycheck magit clippy fireplace gnugo wttrin 2048-game speed-type grandshell-theme moe-theme ample-theme solarized-theme zenburn-theme messages-are-flowing aggressive-indent whitespace-cleanup-mode elpy)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function (quote mailclient-send-it))
@@ -88,6 +88,24 @@
 ;;------------------- Initializing packages ------------------>>>
 
 (package-initialize)
+
+;;-------------------------- IPython ------------------------->>>
+
+;; use IPython
+(setq-default py-shell-name "ipython3")
+(setq-default py-which-bufname "IPython")
+;; ;; use the wx backend, for both mayavi and matplotlib
+;; (setq py-python-command-args
+;;       '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+;; (setq py-force-py-shell-name-p t)
+
+;; ;; switch to the interpreter after executing code
+;; (setq py-shell-switch-buffers-on-execute-p t)
+;; (setq py-switch-buffers-on-execute-p t)
+;; ;; don't split windows
+;; (setq py-split-windows-on-execute-p nil)
+;; ;; try to automagically figure out indentation
+;; (setq py-smart-indentation t)
 
 ;;--------------------- Installing el-get -------------------->>>
 ;; It's important to call el-get before "package initialize" to avoid
@@ -255,6 +273,16 @@
 
 (global-set-key (kbd "M-/") 'undo-tree-visualize)
 
+;;------------------ Fill column indictor ------------------>>>
+
+;; (require 'fill-column-indicator)
+;; (setq fci-rule-width 1)
+;; (setq fci-rule-color "gray")
+;; (define-globalized-minor-mode
+;;   global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;; (global-fci-mode t)
+
+
 ;;--------------------- Smex and AC ------------------------>>>
 
 (global-set-key (kbd "M-x") 'smex)
@@ -263,7 +291,11 @@
 
 
 ;; Enable auto complete even in here
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
 (ac-config-default)
+(global-auto-complete-mode t)
 
 ;; Hyphen on Space, replace a space by "-"
 (defadvice smex (around space-inserts-hyphen activate compile)
