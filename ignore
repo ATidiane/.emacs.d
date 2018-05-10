@@ -78,6 +78,10 @@ Session.vim
 *~
 # Auto-generated tag files
 tags
+
+# Mac
+.DS_Store
+
 # -*- mode: gitignore; -*-
 *~
 \#*\#
@@ -135,6 +139,9 @@ smex-items
 
 # speed-type
 /speed-type/
+
+# multiple-cursors
+.mc-lists.el
 
 # server auth directory
 /server/
