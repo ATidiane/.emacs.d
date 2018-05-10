@@ -65,7 +65,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(cursor ((t (:background "color-127" :foreground "brightblack")))))
 
 
 
@@ -266,7 +266,6 @@
 (powerline-center-theme)
 (setq powerline-default-separator 'wave)
 
-
 ;;-------------------- Undo Tree mode ---------------------->>>
 
 (global-undo-tree-mode)
@@ -361,8 +360,6 @@
     ;; ...else, run the original ido-set-matches-1
     ad-do-it))
 
-
-
 ;;---------------------- Binding keys  --------------------->>>
 
 (global-set-key "\C-cb" 'sh-mode)
@@ -386,7 +383,6 @@
 
 ;; (set-face-background 'linum "cyan")
 ;; (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-
 
 ;;--------------------------- Fun -------------------------->>>
 

@@ -133,6 +133,9 @@ smex-items
 # url
 /url/
 
+# speed-type
+/speed-type/
+
 # server auth directory
 /server/
 
